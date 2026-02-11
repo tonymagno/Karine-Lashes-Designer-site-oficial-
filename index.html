@@ -1,8 +1,8 @@
 diff --git a/index.html b/index.html
-index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b89501d170 100644
+index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..c4f48007c9181d8fd8e104623c89fee8e01c8fdb 100644
 --- a/index.html
 +++ b/index.html
-@@ -1,69 +1,148 @@
+@@ -1,69 +1,151 @@
  <!DOCTYPE html>
 -<html lang="en">
 +<html lang="pt-BR">
@@ -22,6 +22,7 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +    <title>Curso de Extensão de Cílios Karine Lashes</title>
 +    <meta name="description" content="Aprenda extensão de cílios com método profissional, atraia clientes e aumente sua renda com o Curso de Extensão de Cílios Karine Lashes.">
 +    <link rel="stylesheet" href="styles.css">
++    <script src="script.js" defer></script>
  </head>
  <body>
 +    <header class="hero" id="topo">
@@ -49,12 +50,18 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +                <a class="button button-primary" href="https://go.hotmart.com/D86958225K" target="_blank" rel="noopener noreferrer">Quero garantir minha vaga agora</a>
 +                <a class="button button-secondary" href="https://wa.me/5512991465956" target="_blank" rel="noopener noreferrer">Clique para conversar e receber acesso diretamente: +55 12 99146-5956</a>
 +            </div>
-+        </div>
-+    </header>
  
 -<section>
 -    <h2>Problem/Solution</h2>
 -    <p>Are you tired of ordinary lashes that don’t enhance your beauty? Our premium designer lashes offer the solution you need.</p>
+-</section>
++            <p class="countdown-wrap">Encerramento do lote promocional em: <strong id="countdown">carregando...</strong></p>
++        </div>
++    </header>
+ 
+-<section>
+-    <h2>Modules</h2>
+-    <p>Our lashes come in various styles to fit any occasion, whether for everyday wear or special events.</p>
 -</section>
 +    <main>
 +        <section class="section" id="problema-solucao">
@@ -67,8 +74,8 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +        </section>
  
 -<section>
--    <h2>Modules</h2>
--    <p>Our lashes come in various styles to fit any occasion, whether for everyday wear or special events.</p>
+-    <h2>Bonuses</h2>
+-    <p>Order today to receive exclusive offers and discounts on your favorite lash products!</p>
 -</section>
 +        <section class="section alt" id="aprendizado">
 +            <div class="container">
@@ -104,8 +111,8 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +        </section>
  
 -<section>
--    <h2>Bonuses</h2>
--    <p>Order today to receive exclusive offers and discounts on your favorite lash products!</p>
+-    <h2>Testimonials</h2>
+-    <p>"I absolutely love my Karine lashes! They are so comfortable and look amazing!" - Happy Customer</p>
 -</section>
 +        <section class="section" id="bonus">
 +            <div class="container">
@@ -121,23 +128,23 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +            </div>
 +        </section>
  
--<section>
--    <h2>Testimonials</h2>
--    <p>"I absolutely love my Karine lashes! They are so comfortable and look amazing!" - Happy Customer</p>
+-<section class="cta">
+-    <h2>Get Your Designer Lashes Today!</h2>
+-    <button style="padding: 10px 20px; background: #fff; color: #5cb85c; border: none; cursor: pointer;">Shop Now</button>
 -</section>
 +        <section class="section alt" id="prova-social">
 +            <div class="container">
 +                <h2>Resultados que mostram o potencial do método</h2>
 +                <div class="testimonials">
-+                    <blockquote>
++                    <blockquote class="testimonial">
 +                        “Eu comecei sem experiência e em poucas semanas já estava atendendo minhas primeiras clientes com segurança. Hoje tenho renda extra todos os meses.”
 +                        <cite>— Aluna Karine Lashes</cite>
 +                    </blockquote>
-+                    <blockquote>
++                    <blockquote class="testimonial">
 +                        “Minha retenção melhorou muito depois das aulas de técnica e acabamento. As clientes voltam e ainda me indicam.”
 +                        <cite>— Aluna Karine Lashes</cite>
 +                    </blockquote>
-+                    <blockquote>
++                    <blockquote class="testimonial">
 +                        “Com as estratégias de divulgação, saí do zero para agenda quase completa. Foi o melhor investimento que fiz na minha carreira.”
 +                        <cite>— Aluna Karine Lashes</cite>
 +                    </blockquote>
@@ -147,9 +154,9 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +            </div>
 +        </section>
  
--<section class="cta">
--    <h2>Get Your Designer Lashes Today!</h2>
--    <button style="padding: 10px 20px; background: #fff; color: #5cb85c; border: none; cursor: pointer;">Shop Now</button>
+-<section>
+-    <h2>Our Guarantee</h2>
+-    <p>If you’re not completely satisfied with your lashes, return them for a full refund!</p>
 -</section>
 +        <section class="section cta-section" id="cta">
 +            <div class="container">
@@ -162,11 +169,6 @@ index a0d701b69c9cfc2b81e1c957ea8458ead562eeb6..d280309fb0e688ab0604c373f7e937b8
 +            </div>
 +        </section>
  
--<section>
--    <h2>Our Guarantee</h2>
--    <p>If you’re not completely satisfied with your lashes, return them for a full refund!</p>
--</section>
--
 -<footer>
 -    <p>Follow us on social media:</p>
 -    <div class="social-links">

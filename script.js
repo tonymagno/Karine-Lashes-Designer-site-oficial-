@@ -1,1 +1,1 @@
-console.log("Landing page Karine Lashes carregada");
+console.log("Landing Karine Lashes carregada");

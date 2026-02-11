@@ -1,50 +1,65 @@
+/* GENERAL */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #fff;
   color: #333;
 }
+a { text-decoration: none; }
 
-/* Hero */
+/* HERO */
 .hero {
   text-align: center;
-  padding: 40px 20px;
-  background: #fce4ec;
+  padding: 40px 10px;
+  background: #fff;
 }
 .hero h1 {
-  font-size: 28px;
-  margin: 10px 0;
+  font-size: 26px;
+  margin: 8px 0;
 }
 .hero p {
   font-size: 18px;
   margin: 8px 0 20px;
 }
-.btn-primary {
+.btn-btn-primary {
   background: #d81b60;
   color: #fff;
-  padding: 14px 24px;
-  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
   border-radius: 8px;
+  display: inline-block;
 }
 
-/* Benefits */
+/* BENEFITS */
 .benefits {
-  padding: 30px 20px;
+  padding: 30px 15px;
 }
 .benefits ul {
   list-style: none;
   padding: 0;
 }
 .benefits li {
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
-/* Proofs */
-.proofs {
-  padding: 30px 20px;
+/* MODULES */
+.modules {
+  padding: 30px 15px;
 }
-.proofs .grid {
+.modules .grid {
+  display: flex;
+  gap: 10px;
+}
+.modules img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* PROOFS */
+.proofs {
+  padding: 30px 15px;
+}
+.proofs .grid-proofs {
   display: flex;
   gap: 10px;
 }
@@ -53,9 +68,9 @@ body {
   border-radius: 8px;
 }
 
-/* CTA */
-.cta {
+/* CTA FINAL */
+.cta-final {
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 10px;
   background: #f8bbd0;
 }

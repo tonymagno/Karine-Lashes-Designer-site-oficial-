@@ -1,138 +1,293 @@
-diff --git a/script.js b/script.js
-index 46935d334194eaf2f0bb589bb6cb3c781e5e9e8a..27a3404029180893e810b3acb6dc730417b34772 100644
---- a/script.js
-+++ b/script.js
-@@ -1,51 +1,90 @@
--// script.js
-+// Interações da landing page Karine Lashes
+diff --git a/styles.css b/styles.css
+index d2078c8caa0d3db464b595fe621dfaceec0ec67f..6ba2470ec6bb0859b0f2ca71f50abfeca636257d 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1,67 +1,248 @@
+-.container {
+-    width: 100%;
+-    max-width: 1200px;
+-    margin: 0 auto;
+-    padding: 0 15px;
++:root {
++    --bg: #fffafc;
++    --text: #2f1e2a;
++    --muted: #6f5a68;
++    --primary: #c2187a;
++    --primary-dark: #8f125b;
++    --secondary: #ffffff;
++    --accent: #ffd7ec;
++    --card: #ffffff;
++    --border: #f0d5e3;
++}
++
++* {
++    box-sizing: border-box;
+ }
  
--// Form Validation
--function validateForm() {
--    // Validate form fields here
--}
-+// Rolagem suave apenas para links internos existentes
-+const linksInternos = document.querySelectorAll('a[href^="#"]');
-+linksInternos.forEach((link) => {
-+    link.addEventListener('click', (evento) => {
-+        const alvoId = link.getAttribute('href');
-+        const alvo = alvoId ? document.querySelector(alvoId) : null;
-+
-+        if (!alvo) {
-+            return;
-+        }
+ body {
+-    font-family: 'Arial', sans-serif;
++    margin: 0;
++    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+     line-height: 1.6;
+-    background-color: #ffffff;
+-    color: #333;
++    background: var(--bg);
++    color: var(--text);
+ }
  
--// Smooth Scrolling
--const links = document.querySelectorAll('a[href^="#"]');
--links.forEach(link => {
--    link.addEventListener('click', function(e) {
--        e.preventDefault();
--        const target = document.querySelector(this.getAttribute('href'));
--        target.scrollIntoView({ behavior: 'smooth' });
-+        evento.preventDefault();
-+        alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-     });
- });
+-.header {
+-    background-color: #007bff;
+-    color: white;
+-    padding: 20px 0;
++.container {
++    width: min(1100px, 92%);
++    margin: 0 auto;
++}
++
++.hero {
++    background: radial-gradient(circle at top right, #ffe8f4 0%, #fff 52%);
++    padding: 56px 0 42px;
+     text-align: center;
+ }
  
--// Countdown Timer for Limited Spots
--const countdownDate = new Date('2026-02-11T23:59:59Z').getTime();
--const countdownFunction = setInterval(function() {
--    const now = new Date().getTime();
--    const distance = countdownDate - now;
--    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
--    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
--    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
--    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
--    document.getElementById('countdown').innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
--    if (distance < 0) {
--        clearInterval(countdownFunction);
--        document.getElementById('countdown').innerHTML = 'EXPIRED';
-+// Contador regressivo do lote promocional
-+const contador = document.getElementById('countdown');
-+if (contador) {
-+    const dataLimite = new Date('2026-12-31T23:59:59-03:00').getTime();
+-.header h1 {
++.badge {
++    display: inline-block;
++    background: var(--accent);
++    color: var(--primary-dark);
++    border: 1px solid var(--border);
++    border-radius: 999px;
++    padding: 8px 14px;
++    font-size: 0.85rem;
++    font-weight: 700;
++    margin-bottom: 16px;
++}
 +
-+    const atualizarContador = () => {
-+        const agora = Date.now();
-+        const distancia = dataLimite - agora;
++h1,
++h2,
++h3 {
++    line-height: 1.2;
++    margin: 0 0 14px;
++}
 +
-+        if (distancia <= 0) {
-+            contador.textContent = 'lote encerrado';
-+            return false;
-+        }
++h1 {
++    font-size: clamp(1.8rem, 4vw, 3rem);
++}
 +
-+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
++h2 {
++    font-size: clamp(1.5rem, 3.2vw, 2.2rem);
++}
 +
-+        contador.textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-+        return true;
-+    };
++p {
++    margin: 0 0 14px;
++}
 +
-+    const ativo = atualizarContador();
-+    if (ativo) {
-+        const timer = setInterval(() => {
-+            const continua = atualizarContador();
-+            if (!continua) {
-+                clearInterval(timer);
-+            }
-+        }, 1000);
++.subheadline {
++    max-width: 820px;
++    margin: 0 auto 24px;
++    color: var(--muted);
++    font-size: 1.05rem;
++}
++
++.hero-media {
++    margin: 26px auto;
++    max-width: 840px;
++}
++
++.media-placeholder {
++    border: 2px dashed #e8b8d2;
++    background: #fff;
++    border-radius: 16px;
++    padding: 24px;
++    text-align: left;
++}
++
++.section {
++    padding: 54px 0;
++}
++
++.section.alt {
++    background: #fff;
++    border-top: 1px solid #f5e3ed;
++    border-bottom: 1px solid #f5e3ed;
++}
++
++.grid {
++    display: grid;
++    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
++    gap: 16px;
++    margin-top: 18px;
++}
++
++.card {
++    background: var(--card);
++    border: 1px solid var(--border);
++    border-radius: 14px;
++    padding: 18px;
++    box-shadow: 0 8px 24px rgba(194, 24, 122, 0.06);
++}
++
++.checklist {
++    margin: 0;
++    padding-left: 20px;
++}
++
++.checklist li {
++    margin-bottom: 10px;
++}
++
++.testimonials {
++    display: grid;
++    gap: 14px;
++    margin: 16px 0;
++}
++
++blockquote {
+     margin: 0;
+-    font-size: 2.5rem;
++    background: #fff;
++    border-left: 4px solid var(--primary);
++    padding: 14px 16px;
++    border-radius: 8px;
++}
++
++cite {
++    display: block;
++    margin-top: 8px;
++    font-style: normal;
++    font-weight: 700;
++    color: var(--primary-dark);
++}
++
++.results {
++    font-weight: 600;
++}
++
++.suggestion {
++    color: var(--muted);
++    font-size: 0.95rem;
++}
++
++.cta-group {
++    display: flex;
++    flex-wrap: wrap;
++    justify-content: center;
++    gap: 12px;
++    margin-top: 20px;
++}
++
++.countdown-wrap {
++    margin-top: 16px;
++    color: var(--primary-dark);
++    font-weight: 600;
++}
++
++#countdown {
++    color: var(--primary);
+ }
+ 
+ .button {
+     display: inline-block;
+-    padding: 10px 20px;
+-    font-size: 1rem;
+-    color: #ffffff;
+-    background-color: #28a745;
+-    border: none;
+-    border-radius: 5px;
++    border-radius: 10px;
++    padding: 13px 18px;
++    font-weight: 700;
+     text-decoration: none;
+-    transition: background-color 0.3s;
++    transition: transform 0.2s ease, opacity 0.2s ease;
+ }
+ 
+ .button:hover {
+-    background-color: #218838;
++    transform: translateY(-1px);
++    opacity: 0.95;
+ }
+ 
+-.card {
+-    border: 1px solid #ddd;
+-    border-radius: 5px;
+-    box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+-    margin: 20px;
+-    padding: 15px;
+-    transition: transform 0.3s;
++.button-primary {
++    background: var(--primary);
++    color: #fff;
+ }
+ 
+-.card:hover {
+-    transform: translateY(-5px);
++.button-secondary {
++    background: var(--secondary);
++    color: var(--primary-dark);
++    border: 1px solid #e9bdd6;
+ }
+ 
+-@media (max-width: 768px) {
+-    .header h1 {
+-        font-size: 2rem;
+-    }
+-    .card {
+-        margin: 10px;
++.cta-section {
++    text-align: center;
++    background: linear-gradient(180deg, #fff, #fff4fa);
++}
++
++.footer {
++    background: #23131d;
++    color: #fff;
++    padding: 46px 0;
++}
++
++.footer h2 {
++    text-align: center;
++}
++
++.footer-links {
++    display: flex;
++    flex-wrap: wrap;
++    justify-content: center;
++    gap: 16px;
++    margin: 16px 0 20px;
++}
++
++.footer-links a {
++    color: #ffd8ec;
++    text-decoration: none;
++    font-weight: 700;
++}
++
++.footer-links a:hover {
++    text-decoration: underline;
++}
++
++.copyright {
++    margin-top: 18px;
++    text-align: center;
++    color: #bfa6b5;
++    font-size: 0.9rem;
++}
++
++@media (max-width: 720px) {
++    .section {
++        padding: 40px 0;
      }
--}, 1000);
--
--// Testimonial Carousel
--const testimonials = document.querySelectorAll('.testimonial');
--let currentTestimonial = 0;
--function showTestimonial(index) {
--    testimonials.forEach((testimonial, i) => {
--        testimonial.style.display = i === index ? 'block' : 'none';
--    });
- }
--showTestimonial(currentTestimonial);
--setInterval(() => {
--    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
--    showTestimonial(currentTestimonial);
--}, 5000); // Change testimonial every 5 seconds
--
--// Analytics Tracking
--function trackEvent(event) {
--    // Implement analytics tracking here
 +
-+// Carrossel simples de depoimentos (1 por vez em telas pequenas)
-+const depoimentos = document.querySelectorAll('.testimonial');
-+if (depoimentos.length > 1) {
-+    let indiceAtual = 0;
+     .button {
+         width: 100%;
+-        margin: 10px 0;
++        text-align: center;
++    }
 +
-+    const mostrarDepoimento = (indice) => {
-+        depoimentos.forEach((item, i) => {
-+            item.classList.toggle('is-hidden', i !== indice);
-+        });
-+    };
-+
-+    const deveRotacionar = () => window.matchMedia('(max-width: 900px)').matches;
-+
-+    const iniciarRotacao = () => {
-+        mostrarDepoimento(indiceAtual);
-+
-+        return setInterval(() => {
-+            if (!deveRotacionar()) {
-+                depoimentos.forEach((item) => item.classList.remove('is-hidden'));
-+                return;
-+            }
-+
-+            indiceAtual = (indiceAtual + 1) % depoimentos.length;
-+            mostrarDepoimento(indiceAtual);
-+        }, 4500);
-+    };
-+
-+    let intervalo = iniciarRotacao();
-+
-+    window.addEventListener('resize', () => {
-+        clearInterval(intervalo);
-+        if (!deveRotacionar()) {
-+            depoimentos.forEach((item) => item.classList.remove('is-hidden'));
-+            indiceAtual = 0;
-+        }
-+        intervalo = iniciarRotacao();
-+    });
- }
++    .testimonial.is-hidden {
++        display: none;
+     }
+-}
+\ No newline at end of file
++}

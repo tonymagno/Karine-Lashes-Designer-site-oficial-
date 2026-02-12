@@ -1,86 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tufos & Cílios em Tela | Karine Lashes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Tufos & Cílios em Tela | Karine Lashes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts Elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Pixel de Conversão (Meta) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+  </script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
 </head>
-
 <body>
 
+<!-- HERO -->
 <section class="hero-lux">
-  <div class="hero-text">
+  <div class="hero-bg"></div>
+  <div class="hero-content container">
     <h1>Domine a Arte dos Tufos & Cílios em Tela</h1>
-    <p>Formação exclusiva para mulheres que desejam trabalhar com elegância, técnica e alta retenção.</p>
-    <a href="https://go.hotmart.com/D86958225K" class="btn-gold" target="_blank">
-      INICIAR MINHA JORNADA
-    </a>
-  </div>
-</section>
+    <p>Formação prática com vídeo de técnicas exclusivas para resultados reais desde a primeira aplicação.</p>
 
-<section class="showcase">
-  <img src="assets/hero.jpg" alt="Resultado profissional cílios">
-</section>
-
-<section class="transform">
-  <h2>Resultado desde a primeira aplicação</h2>
-  <div class="before-after">
-    <img src="assets/proofs/depo1.jpg" alt="Antes">
-    <img src="assets/proofs/depo2.jpg" alt="Depois">
-  </div>
-</section>
-
-<section class="testimonials">
-  <h2>Experiência de Alunas</h2>
-
-  <div class="testimonial-card">
-    <img src="assets/proofs/depo3.jpg" alt="Aluna satisfeita">
-    <p>“Consegui minhas primeiras clientes em menos de uma semana.”</p>
-  </div>
-
-  <div class="testimonial-card">
-    <img src="assets/proofs/depo4.jpg" alt="Depoimento">
-    <p>“A técnica de retenção mudou totalmente meus resultados.”</p>
-  </div>
-
-</section>
-
-<section class="cta-lux">
-  <h2>Exclusivo. Elegante. Transformador.</h2>
-  <a href="https://go.hotmart.com/D86958225K" class="btn-gold" target="_blank">
-    QUERO FAZER PARTE
-  </a>
-</section>
-
-<footer class="footer-lux">
-  <div class="footer-content">
-
-    <p class="footer-follow">Siga nossas redes sociais</p>
-
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/karine_lashesdesigner" target="_blank">
-        <img src="assets/icons/instagram-gold.svg" alt="Instagram">
-      </a>
-      <a href="https://www.tiktok.com/@karinevieira057" target="_blank">
-        <img src="assets/icons/tiktok-gold.svg" alt="TikTok">
-      </a>
-      <a href="https://www.facebook.com/Karinelashesdesign" target="_blank">
-        <img src="assets/icons/facebook-gold.svg" alt="Facebook">
-      </a>
-      <a href="https://www.youtube.com/channel/UC9aGuWQ23XH1CsraGcv_G7g" target="_blank">
-        <img src="assets/icons/youtube-gold.svg" alt="YouTube">
-      </a>
+    <!-- Contagem regressiva -->
+    <div id="countdown">
+      <span id="days"></span>d :
+      <span id="hours"></span>h :
+      <span id="mins"></span>m :
+      <span id="secs"></span>s
     </div>
 
-    <p class="footer-contact">
-      WhatsApp: <a href="https://wa.me/5512991465956">+55 12 99146-5956</a>
-    </p>
-
-    <small class="footer-copy">© 2026 Karine Lashes Designer. Todos os direitos reservados.</small>
-
+    <a href="https://go.hotmart.com/D86958225K" class="btn-gold" target="_blank">INICIAR MINHA JORNADA</a>
   </div>
+
+  <!-- Vídeo reduzido como destaque -->
+  <div class="hero-video">
+    <video autoplay muted loop playsinline src="assets/videos/resultados.mp4"></video>
+  </div>
+</section>
+
+<!-- FORMULÁRIO DE EMAIL -->
+<section class="lead-form container">
+  <h2>Quero Receber Mais Detalhes</h2>
+  <form id="emailForm">
+    <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+    <button type="submit">Enviar</button>
+  </form>
+  <p class="form-msg"></p>
+</section>
+
+<!-- RESULTADOS / DEPOIMENTOS (Carrossel) -->
+<section class="testimonials container">
+  <h2>Experiência de Alunas</h2>
+  <div class="carousel-wrapper">
+    <!-- Depoimento 1 -->
+    <div class="slide">
+      <img src="assets/proofs/depo1.jpg" alt="Depoimento">
+      <p>“Fiz duas clientes satisfeitas em 3 dias...”</p>
+      <span>— Simone Gonçalves</span>
+    </div>
+    <div class="slide">
+      <img src="assets/proofs/depo2.jpg" alt="Depoimento">
+      <p>“Consegui minhas primeiras clientes em 7 dias!”</p>
+      <span>— Juliana</span>
+    </div>
+    <div class="slide">
+      <img src="assets/proofs/depo3.jpg" alt="Depoimento">
+      <p>“Agora ganho minha renda todos os meses!”</p>
+      <span>— Aline</span>
+    </div>
+    <div class="slide">
+      <img src="assets/proofs/depo4.jpg" alt="Depoimento">
+      <p>“Retenção e técnica mudaram tudo.”</p>
+      <span>— Fernanda</span>
+    </div>
+    <div class="slide">
+      <img src="assets/proofs/depo5.jpg" alt="Depoimento">
+      <p>“Recomendo para todas as iniciantes!”</p>
+      <span>— Paula</span>
+    </div>
+    <div class="slide">
+      <img src="assets/proofs/depo6.jpg" alt="Depoimento">
+      <p>“Cursos assim fazem diferença real.”</p>
+      <span>— Mariana</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="call-to-action container">
+  <h2>Está pronta para mudar sua vida?</h2>
+  <a href="https://go.hotmart.com/D86958225K" class="btn-gold" target="_blank">SIM, QUERO COMEÇAR</a>
+</section>
+
+<!-- FOOTER LUXO COM REDES SOCIAIS -->
+<footer class="footer-lux container">
+  <p>Siga nossas redes sociais</p>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/karine_lashesdesigner" target="_blank"><img src="assets/icons/instagram-gold.svg" alt="Instagram"></a>
+    <a href="https://www.tiktok.com/@karinevieira057" target="_blank"><img src="assets/icons/tiktok-gold.svg" alt="TikTok"></a>
+    <a href="https://www.facebook.com/Karinelashesdesign" target="_blank"><img src="assets/icons/facebook-gold.svg" alt="Facebook"></a>
+    <a href="https://www.youtube.com/channel/UC9aGuWQ23XH1CsraGcv_G7g" target="_blank"><img src="assets/icons/youtube-gold.svg" alt="YouTube"></a>
+  </div>
+  <p>WhatsApp: <a href="https://wa.me/5512991465956">+55 12 99146-5956</a></p>
+  <small>© 2026 Karine Lashes Designer. Todos os direitos reservados.</small>
 </footer>
 
+<script src="script.js"></script>
+</body>
+</html>

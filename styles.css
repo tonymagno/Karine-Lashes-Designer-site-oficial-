@@ -1,76 +1,98 @@
-/* GENERAL */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  color: #333;
+  background: #0B0B0D;
+  color: #F5F3EF;
+  font-family: 'Montserrat', sans-serif;
 }
-a { text-decoration: none; }
 
-/* HERO */
-.hero {
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero-lux {
   text-align: center;
-  padding: 40px 10px;
-  background: #fff;
+  padding: 120px 20px 80px;
 }
-.hero h1 {
-  font-size: 26px;
-  margin: 8px 0;
+
+.hero-lux h1 {
+  font-size: 48px;
+  color: #C6A15B;
+  margin-bottom: 20px;
 }
-.hero p {
+
+.hero-lux p {
+  max-width: 600px;
+  margin: auto;
   font-size: 18px;
-  margin: 8px 0 20px;
+  opacity: 0.85;
 }
-.btn-btn-primary {
-  background: #d81b60;
-  color: #fff;
-  font-weight: bold;
-  padding: 12px 24px;
-  border-radius: 8px;
+
+.btn-gold {
   display: inline-block;
+  margin-top: 30px;
+  padding: 14px 40px;
+  border: 1px solid #C6A15B;
+  color: #C6A15B;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-/* BENEFITS */
-.benefits {
-  padding: 30px 15px;
-}
-.benefits ul {
-  list-style: none;
-  padding: 0;
-}
-.benefits li {
-  margin: 10px 0;
+.btn-gold:hover {
+  background: #C6A15B;
+  color: #0B0B0D;
 }
 
-/* MODULES */
-.modules {
-  padding: 30px 15px;
-}
-.modules .grid {
-  display: flex;
-  gap: 10px;
-}
-.modules img {
+.showcase img {
   width: 100%;
-  border-radius: 8px;
+  max-height: 700px;
+  object-fit: cover;
 }
 
-/* PROOFS */
-.proofs {
-  padding: 30px 15px;
-}
-.proofs .grid-proofs {
-  display: flex;
-  gap: 10px;
-}
-.proofs img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-/* CTA FINAL */
-.cta-final {
+.transform {
   text-align: center;
-  padding: 30px 10px;
-  background: #f8bbd0;
+  padding: 100px 20px;
+}
+
+.before-after {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.before-after img {
+  width: 40%;
+  border-radius: 12px;
+}
+
+.testimonials {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.testimonial-card {
+  margin: 40px auto;
+  max-width: 600px;
+  border: 1px solid #C6A15B;
+  padding: 30px;
+}
+
+.testimonial-card img {
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.cta-lux {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.footer-lux {
+  text-align: center;
+  padding: 40px;
+  font-size: 14px;
+  opacity: 0.6;
 }

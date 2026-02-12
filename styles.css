@@ -8,35 +8,49 @@ body {
 h1, h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.hero-lux {
-  text-align: center;
-  padding: 120px 20px 80px;
-}
-
-.hero-lux h1 {
-  font-size: 48px;
   color: #C6A15B;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  max-width: 1200px;
+}
+
+/* HERO */
+.hero-lux {
+  position: relative;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.hero-bg {
+  background: url('assets/hero-transparent.jpg') center/cover no-repeat;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.65;
+  z-index: -1;
+}
+
+.hero-content h1 {
+  font-size: 46px;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
-.hero-lux p {
-  max-width: 600px;
-  margin: auto;
-  font-size: 18px;
-  opacity: 0.85;
-}
-
 .btn-gold {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 40px;
-  border: 1px solid #C6A15B;
+  background: transparent;
+  border: 2px solid #C6A15B;
+  padding: 14px 42px;
   color: #C6A15B;
   text-decoration: none;
   transition: 0.3s;
+  font-weight: 500;
 }
 
 .btn-gold:hover {
@@ -44,55 +58,81 @@ h1, h2 {
   color: #0B0B0D;
 }
 
-.showcase img {
-  width: 100%;
-  max-height: 700px;
-  object-fit: cover;
+/* Contagem Regressiva */
+#countdown {
+  font-size: 22px;
+  margin: 12px 0;
+  color: #E8D8A1;
 }
 
-.transform {
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.before-after {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.before-after img {
-  width: 40%;
+/* Vídeo no topo */
+.hero-video video {
+  width: 60%;
+  max-width: 700px;
   border-radius: 12px;
+  margin-top: 36px;
 }
 
-.testimonials {
-  padding: 100px 20px;
+/* FORMULÁRIO */
+.lead-form {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.lead-form input {
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.lead-form button {
+  padding: 10px 22px;
+  background: #C6A15B;
+  border: none;
+  color: #0B0B0D;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* CARROSSEL DE DEPOIMENTOS */
+.carousel-wrapper {
+  display: flex;
+  overflow: hidden;
+  gap: 30px;
+  scroll-snap-type: x mandatory;
+  padding: 40px 0;
+}
+
+.slide {
+  flex: 0 0 60%;
+  scroll-snap-align: center;
+  background: #111;
+  border-radius: 12px;
+  padding: 24px;
   text-align: center;
 }
 
-.testimonial-card {
-  margin: 40px auto;
-  max-width: 600px;
-  border: 1px solid #C6A15B;
-  padding: 30px;
-}
-
-.testimonial-card img {
-  width: 120px;
+.slide img {
+  width: 100px;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
-.cta-lux {
-  text-align: center;
-  padding: 120px 20px;
+/* CTA FINAL */
+.call-to-action {
+  padding: 80px 0;
 }
 
+/* FOOTER */
 .footer-lux {
   text-align: center;
-  padding: 40px;
-  font-size: 14px;
-  opacity: 0.6;
+  padding: 40px 0;
+  font-size: 16px;
+}
+
+.footer-socials img {
+  width: 28px;
+  margin: 0 10px;
 }

@@ -1,789 +1,366 @@
-:root{
+/* ===================================================
+   KARINE LASHES DESIGNER
+   PREMIUM SCRIPT 2026
+=================================================== */
 
---gold:#D4AF37;
---gold-light:#F1D27A;
---gold-dark:#A67C00;
+/* ===================================================
+   CONTADOR PERSISTENTE
+=================================================== */
 
---black:#090909;
---black-soft:#111111;
---black-card:#161616;
+const STORAGE_KEY = "karine_lashes_countdown";
 
---white:#F8F6F2;
---gray:#CFCFCF;
+let endDate = localStorage.getItem(STORAGE_KEY);
 
---glass:rgba(255,255,255,.05);
+if (!endDate) {
 
---shadow:
-0 20px 60px rgba(0,0,0,.45);
+  const futureDate = new Date();
 
---radius:24px;
+  futureDate.setHours(futureDate.getHours() + 48);
 
-}
+  localStorage.setItem(
+    STORAGE_KEY,
+    futureDate.getTime()
+  );
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-
-font-family:'Montserrat',sans-serif;
-background:
-radial-gradient(circle at top,
-#1a1a1a 0%,
-#0f0f10 40%,
-#090909 100%);
-
-color:var(--white);
-
-overflow-x:hidden;
-line-height:1.7;
+  endDate = futureDate.getTime();
 
 }
 
-img{
-max-width:100%;
-display:block;
+endDate = parseInt(endDate);
+
+function updateCountdown() {
+
+  const now = new Date().getTime();
+
+  const distance = endDate - now;
+
+  if (distance <= 0) {
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("mins").textContent = "00";
+    document.getElementById("secs").textContent = "00";
+
+    return;
+  }
+
+  const days =
+    Math.floor(
+      distance / (1000 * 60 * 60 * 24)
+    );
+
+  const hours =
+    Math.floor(
+      (distance % (1000 * 60 * 60 * 24))
+      /
+      (1000 * 60 * 60)
+    );
+
+  const mins =
+    Math.floor(
+      (distance % (1000 * 60 * 60))
+      /
+      (1000 * 60)
+    );
+
+  const secs =
+    Math.floor(
+      (distance % (1000 * 60))
+      /
+      1000
+    );
+
+  document.getElementById("days").textContent =
+    String(days).padStart(2, "0");
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById("mins").textContent =
+    String(mins).padStart(2, "0");
+
+  document.getElementById("secs").textContent =
+    String(secs).padStart(2, "0");
 }
 
-a{
-text-decoration:none;
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+/* ===================================================
+   CARROSSEL PREMIUM
+=================================================== */
+
+const carousel =
+document.querySelector(".carousel-wrapper");
+
+const slides =
+document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+function autoSlide() {
+
+  if (!carousel || slides.length === 0) return;
+
+  currentSlide++;
+
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+
+  carousel.scrollTo({
+    left:
+      slides[currentSlide].offsetLeft,
+    behavior: "smooth"
+  });
+
 }
 
-.container{
-width:min(1200px,92%);
-margin:auto;
-}
+setInterval(autoSlide, 4500);
 
-/* =========================
-HERO
-========================= */
+/* ===================================================
+   REVEAL ANIMATION
+=================================================== */
 
-.hero{
-
-position:relative;
-padding:120px 0 100px;
-
-overflow:hidden;
-
-}
-
-.hero::before{
-
-content:"";
-
-position:absolute;
-
-width:700px;
-height:700px;
-
-background:
-radial-gradient(
-circle,
-rgba(212,175,55,.12),
-transparent 70%
+const revealElements =
+document.querySelectorAll(
+  ".card, .slide, .lead-box, .final-cta, .video-card"
 );
 
-top:-250px;
-right:-250px;
+revealElements.forEach(el => {
+
+  el.style.opacity = "0";
+
+  el.style.transform =
+  "translateY(40px)";
+
+  el.style.transition =
+  "all .8s ease";
+
+});
+
+const observer =
+new IntersectionObserver(
+
+(entries) => {
+
+entries.forEach(entry => {
+
+if (entry.isIntersecting) {
+
+entry.target.style.opacity = "1";
+
+entry.target.style.transform =
+"translateY(0px)";
 
 }
 
-.hero-overlay{
+});
 
-position:absolute;
-inset:0;
+},
 
-background:
-linear-gradient(
-180deg,
-rgba(0,0,0,.2),
-rgba(0,0,0,.6)
+{
+threshold: 0.15
+}
+
 );
 
+revealElements.forEach(el => {
+observer.observe(el);
+});
+
+/* ===================================================
+   FORMULÁRIO PREMIUM
+=================================================== */
+
+const form =
+document.getElementById("emailForm");
+
+const msg =
+document.querySelector(".form-msg");
+
+if (form) {
+
+form.addEventListener(
+"submit",
+
+async (e) => {
+
+e.preventDefault();
+
+msg.textContent =
+"Enviando...";
+
+msg.style.color =
+"#d4af37";
+
+try {
+
+const response =
+await fetch(
+"https://script.google.com/macros/s/SEU_SCRIPT_ID/exec",
+{
+method: "POST",
+body:
+new URLSearchParams(
+new FormData(form)
+)
 }
-
-.hero-grid{
-
-position:relative;
-
-display:grid;
-grid-template-columns:1fr 1fr;
-
-align-items:center;
-gap:60px;
-
-z-index:2;
-
-}
-
-.badge{
-
-display:inline-flex;
-
-padding:10px 18px;
-
-border:1px solid rgba(212,175,55,.25);
-
-background:rgba(212,175,55,.08);
-
-border-radius:999px;
-
-font-size:.85rem;
-
-margin-bottom:25px;
-
-backdrop-filter:blur(12px);
-
-}
-
-.hero h1{
-
-font-family:'Playfair Display',serif;
-
-font-size:clamp(2.6rem,5vw,4.8rem);
-
-line-height:1.1;
-
-margin-bottom:24px;
-
-font-weight:700;
-
-}
-
-.hero-subtitle{
-
-font-size:1.15rem;
-
-color:var(--gray);
-
-max-width:650px;
-
-margin-bottom:35px;
-
-}
-
-.hero-benefits{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:14px;
-
-margin-bottom:35px;
-
-}
-
-.hero-benefits div{
-
-background:var(--glass);
-
-padding:14px 18px;
-
-border-radius:16px;
-
-border:1px solid rgba(255,255,255,.08);
-
-backdrop-filter:blur(10px);
-
-}
-
-.countdown-wrapper{
-
-margin-bottom:35px;
-
-}
-
-.urgency-text{
-
-color:var(--gold-light);
-
-font-weight:600;
-
-margin-bottom:18px;
-
-}
-
-#countdown{
-
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-
-}
-
-.time-box{
-
-width:90px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(212,175,55,.15);
-
-border-radius:18px;
-
-padding:16px;
-
-text-align:center;
-
-backdrop-filter:blur(15px);
-
-}
-
-.time-box span{
-
-display:block;
-
-font-size:2rem;
-font-weight:700;
-
-color:var(--gold);
-
-}
-
-.time-box small{
-
-color:var(--gray);
-
-font-size:.8rem;
-
-}
-
-.btn-primary{
-
-display:inline-block;
-
-padding:18px 38px;
-
-background:
-linear-gradient(
-135deg,
-var(--gold-light),
-var(--gold)
 );
 
-color:#000;
+if (response.ok) {
 
-font-weight:700;
+msg.textContent =
+"Cadastro realizado com sucesso!";
 
-border-radius:999px;
+msg.style.color =
+"#6EEB83";
 
-transition:.35s;
+form.reset();
 
-box-shadow:
-0 15px 40px rgba(212,175,55,.35);
+} else {
 
-}
-
-.btn-primary:hover{
-
-transform:
-translateY(-4px);
-
-box-shadow:
-0 25px 50px rgba(212,175,55,.45);
+throw new Error();
 
 }
 
-.trust-info{
+} catch {
 
-display:flex;
-gap:20px;
-flex-wrap:wrap;
+msg.textContent =
+"Não foi possível enviar. Tente novamente.";
 
-margin-top:25px;
-
-font-size:.92rem;
-
-color:var(--gray);
+msg.style.color =
+"#ff6b6b";
 
 }
 
-.video-card{
-
-overflow:hidden;
-
-border-radius:32px;
-
-background:#000;
-
-border:1px solid rgba(212,175,55,.18);
-
-box-shadow:var(--shadow);
-
 }
 
-.video-card video{
-
-width:100%;
-display:block;
-
-}
-
-/* =========================
-SECTIONS
-========================= */
-
-section{
-
-padding:110px 0;
-
-}
-
-h2{
-
-font-family:'Playfair Display',serif;
-
-font-size:clamp(2rem,4vw,3rem);
-
-text-align:center;
-
-margin-bottom:20px;
-
-}
-
-.section-subtitle{
-
-text-align:center;
-
-max-width:700px;
-
-margin:auto auto 60px;
-
-color:var(--gray);
-
-}
-
-/* =========================
-CARDS
-========================= */
-
-.cards-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(260px,1fr));
-
-gap:28px;
-
-margin-top:60px;
-
-}
-
-.card{
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,.05),
-rgba(255,255,255,.02)
-);
-
-border:1px solid rgba(212,175,55,.12);
-
-padding:32px;
-
-border-radius:var(--radius);
-
-backdrop-filter:blur(18px);
-
-transition:.35s;
-
-}
-
-.card:hover{
-
-transform:
-translateY(-8px);
-
-border-color:
-rgba(212,175,55,.35);
-
-}
-
-.card h3{
-
-color:var(--gold);
-
-margin-bottom:14px;
-
-font-size:1.2rem;
-
-}
-
-.card p{
-
-color:var(--gray);
-
-}
-
-/* =========================
-FORM
-========================= */
-
-.lead-box{
-
-max-width:800px;
-
-margin:auto;
-
-text-align:center;
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,.05),
-rgba(255,255,255,.02)
-);
-
-padding:60px;
-
-border-radius:32px;
-
-border:1px solid rgba(212,175,55,.15);
-
-backdrop-filter:blur(20px);
-
-}
-
-.lead-box p{
-
-color:var(--gray);
-
-margin:20px 0 30px;
-
-}
-
-#emailForm{
-
-display:flex;
-
-gap:15px;
-
-justify-content:center;
-
-flex-wrap:wrap;
-
-}
-
-#emailForm input{
-
-width:350px;
-
-padding:18px;
-
-border:none;
-
-outline:none;
-
-border-radius:16px;
-
-background:#fff;
-
-}
-
-#emailForm button{
-
-padding:18px 28px;
-
-border:none;
-
-cursor:pointer;
-
-border-radius:16px;
-
-font-weight:700;
-
-background:var(--gold);
-
-}
-
-/* =========================
-TESTIMONIALS
-========================= */
-
-.carousel-wrapper{
-
-display:flex;
-
-gap:25px;
-
-overflow-x:auto;
-
-padding:20px 10px;
-
-scrollbar-width:none;
-
-}
-
-.carousel-wrapper::-webkit-scrollbar{
-display:none;
-}
-
-.slide{
-
-min-width:350px;
-
-background:
-linear-gradient(
-180deg,
-rgba(255,255,255,.05),
-rgba(255,255,255,.02)
-);
-
-border-radius:28px;
-
-padding:30px;
-
-border:1px solid rgba(212,175,55,.12);
-
-}
-
-.slide img{
-
-width:90px;
-height:90px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-margin-bottom:20px;
-
-border:3px solid var(--gold);
-
-}
-
-.slide p{
-
-margin-bottom:15px;
-
-font-style:italic;
-
-color:var(--white);
-
-}
-
-.slide span{
-
-color:var(--gold-light);
-
-font-weight:600;
-
-}
-
-/* =========================
-CTA FINAL
-========================= */
-
-.final-cta{
-
-text-align:center;
-
-background:
-linear-gradient(
-180deg,
-rgba(212,175,55,.05),
-transparent
 );
 
 }
 
-.final-cta p{
+/* ===================================================
+   MICRO INTERAÇÕES DOS CARDS
+=================================================== */
 
-max-width:700px;
+const cards =
+document.querySelectorAll(".card");
 
-margin:25px auto 40px;
+cards.forEach(card => {
 
-color:var(--gray);
+card.addEventListener(
+"mouseenter",
 
-font-size:1.05rem;
+() => {
 
-}
-
-/* =========================
-FOOTER
-========================= */
-
-footer{
-
-padding:80px 0;
-
-border-top:
-1px solid rgba(212,175,55,.12);
-
-text-align:center;
+card.style.transform =
+"translateY(-10px)";
 
 }
 
-footer h3{
+);
 
-font-family:'Playfair Display',serif;
+card.addEventListener(
+"mouseleave",
 
-font-size:2rem;
+() => {
 
-margin-bottom:12px;
-
-color:var(--gold);
-
-}
-
-footer p{
-
-color:var(--gray);
+card.style.transform =
+"translateY(0px)";
 
 }
 
-.social-links{
+);
 
-display:flex;
+});
 
-justify-content:center;
+/* ===================================================
+   BOTÃO CTA COM EFEITO
+=================================================== */
 
-gap:25px;
+const buttons =
+document.querySelectorAll(".btn-primary");
 
-flex-wrap:wrap;
+buttons.forEach(btn => {
 
-margin:35px 0;
+btn.addEventListener(
+"mouseenter",
 
-}
+() => {
 
-.social-links a{
+btn.style.transform =
+"translateY(-4px) scale(1.02)";
 
-color:var(--white);
+});
 
-transition:.3s;
+btn.addEventListener(
+"mouseleave",
 
-}
+() => {
 
-.social-links a:hover{
+btn.style.transform =
+"translateY(0px) scale(1)";
 
-color:var(--gold);
+});
 
-}
+});
 
-.whatsapp a{
+/* ===================================================
+   SCROLL SUAVE
+=================================================== */
 
-color:var(--gold-light);
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor => {
 
-font-weight:600;
+anchor.addEventListener(
+"click",
 
-}
+function(e){
 
-.copyright{
+e.preventDefault();
 
-margin-top:35px;
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
 
-font-size:.85rem;
+if(target){
 
-opacity:.7;
-
-}
-
-/* =========================
-RESPONSIVO
-========================= */
-
-@media(max-width:992px){
-
-.hero-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.hero-right{
-
-order:-1;
-
-}
-
-.hero{
-
-padding-top:70px;
+target.scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
-}
+});
 
-@media(max-width:768px){
+});
 
-section{
+/* ===================================================
+   ANO AUTOMÁTICO FOOTER
+=================================================== */
 
-padding:80px 0;
+const yearElement =
+document.querySelector(".year");
 
-}
+if(yearElement){
 
-.hero h1{
-
-font-size:2.4rem;
-
-}
-
-.hero-benefits{
-
-grid-template-columns:1fr;
+yearElement.textContent =
+new Date().getFullYear();
 
 }
 
-.time-box{
+console.log(
+"%cKarine Lashes Designer Premium",
+"color:#d4af37;font-size:18px;font-weight:bold;"
+);
 
-width:78px;
-
-}
-
-.lead-box{
-
-padding:35px 25px;
-
-}
-
-#emailForm input{
-
-width:100%;
-
-}
-
-#emailForm button{
-
-width:100%;
-
-}
-
-.slide{
-
-min-width:280px;
-
-}
-
-}
-
-@media(max-width:480px){
-
-.btn-primary{
-
-width:100%;
-text-align:center;
-
-}
-
-.trust-info{
-
-justify-content:center;
-
-}
-
-#countdown{
-
-justify-content:center;
-
-}
-
-}
+console.log(
+"%cLanding Page Premium carregada com sucesso.",
+"color:#ffffff;font-size:12px;"
+);

@@ -326,6 +326,10 @@ h2 {
    FORM
 ========================= */
 
+.lead-section {
+  padding-top: 30px;
+}
+
 .lead-box {
   max-width: 800px;
   margin: auto;
